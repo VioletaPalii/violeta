@@ -1,0 +1,72 @@
+class Book:
+    def __init__(self, title, author, isbn):
+        self.title = title
+        self.author = author
+        self.isbn = isbn
+
+class Library:
+    def __init__(self):
+        self.books = []
+
+    def add_book(self, book):
+        self.books.append(book)
+        print("Book added to the library.")
+
+    def remove_book(self, book):
+        if book in self.books:
+            self.books.remove(book)
+            print("Book removed from the library.")
+        else:
+            print("Book not found in the library.")
+
+    def display_books(self):
+        if self.books:
+            print("Books in the library:")
+            for book in self.books:
+                print(f"Title: {book.title}, Author: {book.author}, ISBN: {book.isbn}")
+        else:
+            print("The library is empty.")
+
+library = Library()
+
+book1 = Book("After", "Todd Anna", "9781476792484")
+book2 = Book("Carte de citire și gîndire", "Spiridon Vangheli", "9975956955")
+book3 = Book("Basme populare românești", "anonim", "97379161319737916131")
+
+library.add_book(book1)
+library.add_book(book2)
+library.add_book(book3)
+
+while True:
+    print("\n1. Add a book")
+    print("2. Remove a book")
+    print("3. Display all books")
+    print("4. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        title = input("Enter the title of the book: ")
+        author = input("Enter the author of the book: ")
+        isbn = input("Enter the ISBN of the book: ")
+        new_book = Book(title, author, isbn)
+        library.add_book(new_book)
+    elif choice == "2":
+        title = input("Enter the title of the book you want to remove: ")
+        book_to_remove = next((book for book in library.books if book.title == title), None)
+        if book_to_remove:
+            library.remove_book(book_to_remove)
+        else:
+            print("Book not found in the library.")
+    elif choice == "3":
+        library.display_books()
+    elif choice == "4":
+        print("Exiting...")
+        break
+    else:
+        print("Invalid choice. Please enter a valid option.")
+ 
+ 
+ 
+ 
+ 
